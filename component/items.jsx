@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import edit from "../Assets/images/bxs-edit.svg";
 import Minus from "../Assets/images/bx-folder-minus.svg";
 import option from "../Assets/images/bx-dots-vertical-rounded.svg"

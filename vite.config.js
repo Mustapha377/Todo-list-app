@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { build, defineConfig } from 'vite';
 
 export default defineConfig({
   server: {  
@@ -6,6 +6,10 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist', // Output directory
-  },
+    rollupOptions: {
+      external: ["react"]
+    }
+  
+    },
 });
 

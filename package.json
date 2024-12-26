@@ -21,9 +21,11 @@
     "uuid": "^11.0.3",
     "vite": "^6.0.5"
   },
-  "devDependencies": {
-    "gh-pages": "^6.2.0",
-    "vite": "^6.0.4"
-  },
-  "description": ""
+  
+    "devDependencies": {
+      "gh-pages": "^6.2.0",
+      "vite": "^6.0.4"
+    },
+    "description": "A simple to-do list application built with React."
+  
 }

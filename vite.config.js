@@ -8,6 +8,11 @@ export default defineConfig({
  build: {
   rollupOptions: {
     external: ['react/jsx-runtime']
-  }
+  },
+  resolve: {
+    alias: {
+      'react/jsx-runtime': path.resolve(__dirname, 'node_modules/react/jsx-runtime'),
+    },
+  },
 }
 })

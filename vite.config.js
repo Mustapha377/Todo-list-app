@@ -5,14 +5,12 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
    plugins: [react()],
  base: '/Todo-list-app/',
+ server: {  
+  port: 3000, // Change the dev server port if needed
+},
  build: {
   rollupOptions: {
     external: ['react/jsx-runtime']
-  },
-  resolve: {
-    alias: {
-      'react/jsx-runtime': path.resolve(__dirname, 'node_modules/react/jsx-runtime'),
-    },
-  },
+  }
 }
 })

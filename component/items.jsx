@@ -9,6 +9,7 @@ function Todoitems(props){
     const [Isdone, setIsdon] = useState(false);
     const [showButton, setshowButton] = useState(false);
     const [isEditting, setisEditting] = useState(false);
+    const [isChacked, setisChacked] = useState(false);
     
     const [inputValue, setinputValue] = useState(props.text);
 
@@ -31,15 +32,22 @@ function Todoitems(props){
         setIsdon(prevalue => {
             return !prevalue;
         })
-     }
+     };
+
+     function handlecheck(){
+        setisChacked(prevalue => {
+            return !prevalue;
+        })
+     };
 
 
 
      
     return(
         <div className="task" >
-        <input className="checkbox" type="checkbox"></input>
-        <li className="task" onClick={Cancelitem} 
+        <input className="checkbox" type="checkbox"
+        checked={isChacked} onChange={handlecheck}></input>
+        <li className={`task ${isChacked ? "checked-text" : ""}`} onClick={Cancelitem} 
         style={{textDecoration: Isdone ? "line-through" :"none"}}>
         {props.text}</li>
 

@@ -18,7 +18,7 @@ body {
   
   .App {
     
-
+    width: 90%;
     max-width: 400px;
     height: 100vh;
     margin: 20px auto;
@@ -26,6 +26,9 @@ body {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch;
+    margin: 4rem auto;
   }
   
   .header {
@@ -96,13 +99,14 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 15px;
-    margin: 10px 0;
+    margin: 10px 10px;
     border: 1px solid #ddd;
     background-color: #f0f0f0;
     border-radius: 25px;
     cursor: pointer;
-    width: 300px;
+   max-width: 300px;
     overflow: hidden;
+   
   }
 
   .option-container{
@@ -153,7 +157,9 @@ body {
     border-radius: 4px;
   }
   
-  
+  .checked-text {
+    color: #2c7;
+  }
 
   .task:hover {
     background: #f0f0f0;
@@ -196,6 +202,18 @@ body {
     box-shadow: 0 -2px 5px rga(0,0,0, 0.2);
   }
   
+  /* mobile screen styles */
+
+  @media( max-width: 786px){
+    .App {
+      overflow-y: scroll; /* maintaine scroll functionality */
+      scrollbar-width: none;  /* firefox */
+    }
+
+    .App::-webkit-scrollbar{
+      display: none; /* chrome , safari and edge */
+    }
+  }
 
 
 /* ending */

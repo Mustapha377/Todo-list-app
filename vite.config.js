@@ -12,5 +12,6 @@ export default defineConfig({
   rollupOptions: {
     external: ['react/jsx-runtime']
   }
-}
+},
+outDir: 'dist', // Output directory
 })

@@ -1,12 +1,8 @@
 import React, {useState} from "react";
 import Todoitems from "./items";
-import Add from "../Assets/images/bx-list-plus.svg";
+import Add from "../Assets/images/bx-plus.svg";
+import box from "../Assets/images/bx-box.svg";
 import {v4 as uuidv4} from "uuid"; 
-
-
-
-
-
 
 
 const Todoapp = () => {
@@ -16,6 +12,30 @@ const Todoapp = () => {
   const [isInputVisible, setInputVisible] = useState(false);
   const [editingItemId, setEditingItemId] = useState(null); // Track item being edited
 
+// A greeting function based on thr current time 
+
+
+  const getGreeting = () => {
+    const currentHour = new Date().getHours();
+    if (currentHour < 12){
+      return "Good morning";
+    }else if (currentHour < 18){
+      return "Good Afternoon";
+    }else {
+      return "Good Eveening"
+    }
+  }
+
+  // render the current date and month
+
+  function showCurrentDateAndMonth() {
+    const now = new Date();
+    const options = { day: 'numeric', month: 'short' }; // Format: e.g., 29 Dec
+    const formattedDate = now.toLocaleDateString('en-US', options);
+    console.log(formattedDate); // Outputs: e.g., "29 Dec"
+    return formattedDate;
+  }
+  
 
   const [Items, setItems] = useState([])
 
@@ -61,10 +81,10 @@ const handleEdit = (id, newText) => {
 {
      } 
     return(
-        <div className="home ">
+        <div className="home">
             <header className="header">
-                <div className="date">22 dec</div>
-                <h1>Good evening <span>To-Do List</span></h1>
+                <div className="date">{showCurrentDateAndMonth()}</div>
+                <h1>{getGreeting()} <span>To-Do List</span></h1>
                 <div className="avatar">👻</div>
             </header>
 
@@ -73,15 +93,16 @@ const handleEdit = (id, newText) => {
           <div id="todo-list-container">
             <h2 className="heading">your tasks</h2>
             {errorMessage && (
-                  <p style={{color: "red"}}>{errorMessage}</p>
+                  <p className="error-message" style={{color: "red"}}>{errorMessage}</p>
                   )} 
              
              
              {isInputVisible && (
-                   <div>
-                        <input onChange={Handlechange} name="input"
+                   <div className="Add-input-container">
+                        <input className="Add-input" 
+                        onChange={Handlechange} name="input"
                         type="text" value={InputText}></input>
-                      <button onClick={addItem}>
+                      <button className="Add-btn" onClick={addItem}>
                           <span>Add</span>
                       </button>
                   </div>
@@ -90,22 +111,31 @@ const handleEdit = (id, newText) => {
               
   
               {Items.length === 0 && (
-                <p id="empty-message">your list is empty</p>)}
+        
+                <div className="empty-message">
+                  <img src={box} alt="" />
+                  <p id="empty-message">your list is empty</p>
+                  <span className="add-suggestion">Add your first task!</span>
+                </div>)}
               
               <ul id="todo-list">
                 {Items.map((todoItem) => 
-                    (<Todoitems className="task" key = {todoItem.id} 
+                    (<Todoitems  key = {todoItem.id} 
                       id = {todoItem.id}
                     text = {todoItem.text}
                     onDeleted = {deleteItem}
-                    onEdit = {(newText) => handleEdit(todoItem.id, newText)}
+                    onEdit = {(newText) => handleEdit(todoItem.id,
+                       newText)}
                     />))}
                 </ul>
                 
             </div>
             </div>  
-
-            <button onClick={HandleInputClick}  className="nav-bar">Add Todo<img src={Add}></img></button>
+           <div className="footer-container">
+             <button onClick={HandleInputClick} 
+              className="floating-button"><img src={Add}>
+                </img></button>
+           </div>
                
 
         </div>

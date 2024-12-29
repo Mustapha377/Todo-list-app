@@ -11,6 +11,7 @@ function Todoitems(props){
     const [isEditting, setisEditting] = useState(false);
     const [isChacked, setisChacked] = useState(false);
     
+    
     const [inputValue, setinputValue] = useState(props.text);
 
     const handleSave = () => {
@@ -26,7 +27,7 @@ function Todoitems(props){
     const hideButtons = () => {
         setshowButton(false);
       };
-    
+
     
     function Cancelitem(){
         setIsdon(prevalue => {
@@ -47,18 +48,21 @@ function Todoitems(props){
         <div className="task" >
         <input className="checkbox" type="checkbox"
         checked={isChacked} onChange={handlecheck}></input>
-        <li className={`task ${isChacked ? "checked-text" : ""}`} onClick={Cancelitem} 
+        <li className={`task-item ${isChacked ? "checked-text" : ""}`}
+         onClick={Cancelitem} 
         style={{textDecoration: Isdone ? "line-through" :"none"}}>
         {props.text}</li>
 
          {isEditting ? (
-        <div>
+        <div className="edit-input-container">
           <input
+            className="edit-input"
             type="text"
             value={inputValue}
             onChange={(e) => setinputValue(e.target.value)}
+            
           />
-          <button onClick={handleSave}>
+          <button className="edit-btn" onClick={handleSave}>
                           <span>Add</span>
                       </button>
         </div>
@@ -84,9 +88,9 @@ function Todoitems(props){
             <button  className="side-button"
          onClick={() => {
              setisEditting(true)}}
-    
             >
-                <img onClick={hideButtons} src={edit} alt="" />
+              <img className="edit-icon" onClick={hideButtons}
+               src={edit} alt="" />
             </button>
             </div>
        </div>
